@@ -13,36 +13,38 @@ import vercel from '@astrojs/vercel/serverless'
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.me',
-	integrations: [
-		expressiveCode(expressiveCodeOptions),
-		tailwind({
-			applyBaseStyles: false
-		}),
-		sitemap(),
+  site: 'https://example.me',
+  integrations: [
+    expressiveCode(expressiveCodeOptions),
+    tailwind({
+      applyBaseStyles: false
+    }),
+    sitemap({
+      filter: (page) => !page.endsWith('/_astro/')
+    }),
 		mdx(),
-		icon()
-	],
-	markdown: {
-		remarkPlugins: [remarkUnwrapImages, remarkReadingTime],
-		rehypePlugins: [
-			[
-				rehypeExternalLinks,
-				{
-					target: '_blank',
-					rel: ['nofollow, noopener, noreferrer']
-				}
-			]
-		],
-		remarkRehype: {
-			footnoteLabelProperties: {
-				className: ['']
-			}
-		}
-	},
-	prefetch: true,
-	output: 'server',
-	adapter: vercel({
-		webAnalytics: { enabled: true }
-	})
+    icon()
+  ],
+  markdown: {
+    remarkPlugins: [remarkUnwrapImages, remarkReadingTime],
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          target: '_blank',
+          rel: ['nofollow, noopener, noreferrer']
+        }
+      ]
+    ],
+    remarkRehype: {
+      footnoteLabelProperties: {
+        className: ['']
+      }
+    }
+  },
+  prefetch: true,
+  output: 'server',
+  adapter: vercel({
+    webAnalytics: { enabled: true }
+  })
 })
