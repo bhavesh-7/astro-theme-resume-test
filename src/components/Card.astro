@@ -12,7 +12,8 @@ const {
 	date,
 	imagePath,
 	altText,
-	imageClass
+	imageClass,
+	collapsible = false
 } = Astro.props
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif}')
 
@@ -20,6 +21,8 @@ if (imagePath) {
 	if (!images[imagePath])
 		throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`)
 }
+
+const uniqueId = `card-${Math.random().toString(36).substr(2, 9)}`
 ---
 
 <Tag
@@ -46,6 +49,79 @@ if (imagePath) {
 			<h2 class='text-muted-foreground'>{subheading}</h2>
 			<h2 class='text-muted-foreground'>{date}</h2>
 		</div>
-		<slot />
+		<div id={uniqueId} class={collapsible ? 'collapsible-content' : ''}>
+			<slot />
+		</div>
+		{collapsible && (
+			<button
+				class='mt-2 flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors'
+				onclick={`toggleCollapse('${uniqueId}')`}
+				data-collapse-btn={uniqueId}
+			>
+				<span class='toggle-text'>More</span>
+				<svg
+					xmlns='http://www.w3.org/2000/svg'
+					width='16'
+					height='16'
+					viewBox='0 0 24 24'
+					fill='none'
+					stroke='currentColor'
+					stroke-width='2'
+					stroke-linecap='round'
+					stroke-linejoin='round'
+					class='toggle-icon transition-transform'
+				>
+					<polyline points='6 9 12 15 18 9'></polyline>
+				</svg>
+			</button>
+		)}
 	</div>
 </Tag>
+
+{collapsible && (
+	<style>
+		.collapsible-content {
+			max-height: 120px;
+			overflow: hidden;
+			position: relative;
+		}
+		
+		.collapsible-content.expanded {
+			max-height: none;
+		}
+		
+		.collapsible-content:not(.expanded)::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 60px;
+			background: linear-gradient(to bottom, transparent, hsl(var(--primary-foreground)));
+			pointer-events: none;
+		}
+		
+		.toggle-icon.rotated {
+			transform: rotate(180deg);
+		}
+	</style>
+	
+	<script is:inline>
+		function toggleCollapse(id) {
+			const content = document.getElementById(id);
+			const btn = document.querySelector(`[data-collapse-btn="${id}"]`);
+			const text = btn.querySelector('.toggle-text');
+			const icon = btn.querySelector('.toggle-icon');
+			
+			if (content.classList.contains('expanded')) {
+				content.classList.remove('expanded');
+				text.textContent = 'More';
+				icon.classList.remove('rotated');
+			} else {
+				content.classList.add('expanded');
+				text.textContent = 'Less';
+				icon.classList.add('rotated');
+			}
+		}
+	</script>
+)}

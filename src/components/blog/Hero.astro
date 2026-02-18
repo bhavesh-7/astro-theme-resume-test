@@ -16,10 +16,21 @@ const { remarkPluginFrontmatter } = await render()
 const dateTimeOptions: Intl.DateTimeFormatOptions = {
 	month: 'long'
 }
+
+let imageError = false
+if (data.coverImage) {
+	try {
+		// Try to resolve the image
+		await data.coverImage.src
+	} catch (e) {
+		imageError = true
+		console.warn(`Cover image not found for post: ${data.title}`)
+	}
+}
 ---
 
 {
-	data.coverImage && (
+	data.coverImage && !imageError && (
 		<div class='aspect-h-9 aspect-w-16 mb-6'>
 			<Image
 				alt={data.coverImage.alt}

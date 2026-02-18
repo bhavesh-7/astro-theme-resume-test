@@ -8,14 +8,15 @@ import SkillLayout from '../components/SkillLayout.astro'
 import PostPreview from '@/components/blog/PostPreview.astro'
 
 import { Image } from 'astro:assets'
-import astro from '../assets/about-astro.png'
+import astro from '../assets/profile-static.png'
 
 import { getAllPosts, sortMDByDate } from '@/utils'
 
-const languages = ['lorem', 'ipsum']
-const frontend = ['lorem', 'ipsum', 'lorem', 'ipsum', 'lorem', 'ipsum', 'lorem']
-const backend = ['lorem', 'ipsum', 'lorem', 'ipsum']
-const others = ['lorem', 'ipsum', 'lorem', 'ipsum', 'lorem']
+const languages = ['Java', 'Kotlin', 'Python', 'SQL', 'JavaScript']
+const frontend = ['React', 'Astro', 'Bootstrap', 'Tailwind CSS']
+const backend = ['Spring Boot', 'Spring MVC', 'Hibernate', 'JPA']
+const devtools = ['Git', 'MySQL', 'PostgreSQL', 'Redis', 'MongoDB', 'Gradle', 'Neovim']
+const others = ['AWS', 'Azure', 'Google Cloud', 'Docker', 'Fedora']
 
 const MAX_POSTS = 10
 const allPosts = await getAllPosts()
@@ -28,14 +29,14 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 			<Image
 				src={astro}
 				alt='profile photo'
-				class='h-28 w-auto rounded-full bg-[#FFBE98] p-2'
+				class='h-[180px] w-[180px] rounded-full bg-[#BCBCBC] p-1'
 				loading='eager'
 			/>
 
 			<div class='flex flex-col items-center gap-y-4'>
-				<h1 class='text-3xl font-bold'>Lorem ipsum dolor</h1>
+				<h1 class='text-3xl font-bold'>Bhavesh Mishra</h1>
 				<a
-					href='https://github.com/srleom/astro-theme-resume.git'
+					href='https://linkedin.com/in/mishraBhavesh'
 					class='flex flex-row items-center gap-x-3 rounded-3xl border border-input px-4 py-2 text-sm shadow-sm transition-all hover:shadow-md'
 				>
 					<span class='relative flex items-center justify-center'>
@@ -45,10 +46,10 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 						<span class='relative inline-flex h-2 w-2 rounded-full bg-green-400'></span>
 					</span>
 
-					<p class='font-medium'>Get free template</p>
+					<p class='font-medium'>Open to work</p>
 				</a>
 				<div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
-					<Label title='Lorem Ipsum'>
+					<Label title='Java Developer'>
 						<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' class='h-5 w-5' slot='icon'
 							><path
 								fill='currentColor'
@@ -56,7 +57,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 							></path></svg
 						>
 					</Label>
-					<Label title='Ipsum'>
+					<Label title='Mumbai, Maharashtra'>
 						<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' class='h-5 w-5' slot='icon'
 							><path
 								fill='currentColor'
@@ -67,7 +68,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 					<Label
 						title='Connect on Linkedin'
 						as='a'
-						href='https://www.linkedin.com/in/example/'
+						href='https://www.linkedin.com/in/mishraBhavesh'
 						target='_blank'
 					>
 						<svg
@@ -81,16 +82,28 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 							></path></svg
 						>
 					</Label>
+					<Label title='Github' as='a' href='https://github.com/bhavesh-7' target='_blank'>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							viewBox='0 0 22 22'
+							slot='icon'
+							class='h-5 w-5 text-foreground/75'
+							><path
+								fill='currentColor'
+								d='M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z'
+							></path>
+						</svg>
+					</Label>
 				</div>
 			</div>
 		</section>
 
 		<Section title='About'>
 			<p class='text-muted-foreground'>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis atque quia omnis
-				consectetur, voluptas praesentium veniam blanditiis ratione asperiores accusantium laborum
-				odit commodi quis deserunt incidunt et dolor iure ut! Lorem ipsum dolor sit, amet
-				consectetur adipisicing elit. Alias quia, doloribus ut beatae perspiciatis voluptatibus.
+				Hi, I'm Bhavesh, a dedicated Java developer with a passion for crafting efficient and
+				user-friendly applications. With experience in web development and a strong foundation in
+				IT, I specialize in building scalable solutions using Java, Spring Boot, and modern
+				development practices. Let's connect and build something amazing together!
 			</p>
 		</Section>
 		{
@@ -109,56 +122,96 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 
 		<Section title='Experience'>
 			<Card
-				heading='Lorem Ipsum'
-				subheading='Sit amet consectetur'
-				date='Dec 2022 - Nov 2023'
-				imagePath='/src/assets/about-astro.png'
-				altText='Lorem, ipsum dolor sit'
+				heading='System Administrator / DevOps Engineer'
+				subheading='Tata Consultancy Services - Mumbai, Maharashtra'
+				date='Feb 2025 - Present'
+				altText='SysAdmin and DevOps Engineer @ Tata Consultancy Services'
 				imageClass='h-12 w-auto md:-left-16'
+				collapsible={true}
 			>
 				<ul class='ml-4 list-disc text-muted-foreground'>
 					<li>
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore debitis recusandae, ut
-						molestiae laboriosam pariatur!
-
-						<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, pariatur!</li>
+						Provisioned and managed Linux servers (RHEL, Ubuntu) across AWS and on-prem
+						environments, ensuring high availability and security compliance.
+					</li>
+					<li>
+						Automated infrastructure configuration and deployment using Ansible, including CI/CD
+						pipelines for playbook validation and rollout.
+					</li>
+					<li>
+						Administered AWS services including EC2 provisioning, Security Group configuration, IAM
+						role management, and network-level access controls.
+					</li>
+					<li>
+						Managed enterprise virtualization environments using VMware vSphere for VM lifecycle
+						operations and resource optimization.
+					</li>
+					<li>
+						Performed server hardening, patch management, and system upgrades to maintain compliance
+						and minimize vulnerabilities.
+					</li>
+					<li>
+						Deployed and maintained mail infrastructure including Zimbra installation, Postfix
+						configuration, SMTP routing, and SFTP services.
+					</li>
+					<li>
+						Configured and maintained DNS services, LDAP/Active Directory integrations, and secure
+						authentication mechanisms.
+					</li>
+					<li>
+						Developed shell scripts and automation workflows to streamline repetitive operational
+						tasks and improve deployment efficiency.
+					</li>
+					<li>
+						Supported version control workflows using SVN and implemented environment-level
+						automation improvements.
+					</li>
+					<li>
+						Troubleshot production issues across infrastructure, networking, and application layers
+						to ensure minimal downtime.
 					</li>
 				</ul>
 			</Card>
 			<Card
-				heading='Lorem Ipsum'
-				subheading='Sit amet consectetur'
-				date='Dec 2022 - Nov 2023'
-				imagePath='/src/assets/about-astro.png'
-				altText='Lorem, ipsum dolor sit'
+				heading='Web Development Intern'
+				subheading='Prometheus Solutions - Remote'
+				date='May 2023 - Jul 2023'
+				altText='Web Development Intern @ Prometheus Solutions'
 				imageClass='h-12 w-auto md:-left-16'
-			/>
+			>
+				<ul class='ml-4 list-disc text-muted-foreground'>
+					<li>Assisted in .NET web application development using C#, ASP.NET, and SQL Server.</li>
+					<li>Contributed to debugging, code reviews, and feature implementation.</li>
+					<li>Conducted manual and automated testing to identify and resolve defects.</li>
+				</ul>
+			</Card>
 		</Section>
 
 		<Section title='Education'>
 			<Card
-				heading='Lorem Ipsum'
-				subheading='Sit amet consectetur'
-				date='Dec 2022 - Nov 2023'
-				imagePath='/src/assets/about-astro.png'
-				altText='Lorem, ipsum dolor sit'
+				heading='Bachelor of Science in Information Technology (Hons)'
+				subheading='Somaiya Vidhyavihar University - Mumbai, Maharashtra'
+				date='Grade - 8.3 CGPA'
+				altText='BS in Information Technology (Hons) @ Somaiya Vidhyavihar University'
 				imageClass='h-12 w-auto md:-left-16'
 			>
 				<ul class='ml-4 list-disc text-muted-foreground'>
 					<li>
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore debitis recusandae, ut
-						molestiae laboriosam pariatur!
-
-						<li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, pariatur!</li>
+						Developed a Android application as a part of the final year project using Kotlin,
+						Firebase, and Google Maps API.
 					</li>
+					<li>Developed a full-stack web application using Java, Spring Boot, and React.</li>
+					<li>
+						Collaborated with a team of 4 to design and implement a RESTful API for the application.
+					</li>
+					<li>Conducted manual and automated testing to identify and resolve defects.</li>
 				</ul>
 			</Card>
 			<Card
-				heading='Lorem Ipsum'
-				subheading='Sit amet consectetur'
-				date='Dec 2022 - Nov 2023'
-				imagePath='/src/assets/about-astro.png'
-				altText='Lorem, ipsum dolor sit'
+				heading='HSC in Computer Science'
+				subheading='Priti Academy College - Mumbai, Maharashtra'
+				date='Grade - 73.50%'
+				altText='HSC in Computer Science @ Priti Academy College'
 				imageClass='h-12 w-auto md:-left-16'
 			/>
 		</Section>
@@ -166,19 +219,19 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 		<Section title='Projects'>
 			<div class='flex flex-col gap-y-3 sm:flex-row sm:gap-x-3 sm:gap-y-0'>
 				<ProjectCard
-					href='https://www.google.com'
-					heading='Consectetur'
-					subheading='Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+					href='https://notes.bhaveshmishra.dev'
+					heading='Sticky Notes - A Note Taking Web Application'
+					subheading='UNDER-DEVELOPMENT: A web application that allows users to create, edit, and delete notes. It also supports categorization and search functionality.'
 					imagePath='/src/assets/coming-soon.png'
-					altText='Example'
+					altText='Sticky Notes - A Note Taking Web Application'
 					class='w-full sm:w-1/2'
 				/>
 				<ProjectCard
-					as='div'
-					heading='Coming soon...'
-					subheading=''
-					imagePath='/src/assets/coming-soon.png'
-					altText='Lorem, ipsum dolor sit'
+					href='https://github.com/bhavesh-7/Tkuzu'
+					heading='Tkuzu - A Ride Sharing Android Application'
+					subheading='An Android application that allows users to book rides, Share their rides in high traffic to cop-up with ride cost and time, track their rides in real-time, and make payments securely.'
+					imagePath='/src/assets/tkuzu.png'
+					altText='Tkuzu - A Ride Sharing Android Application'
 					class='w-full sm:w-1/2'
 				/>
 			</div>
@@ -187,23 +240,23 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 		<Section title='Certifications'>
 			<Card
 				as='a'
-				heading='Lorem ipsum, dolor sit amet consectetur adipisicing.'
-				subheading='Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam dicta magni consequuntur corrupti.'
-				date='Mar 2024 - Mar 2024'
-				imagePath='/src/assets/about-astro.png'
-				altText='Lorem, ipsum dolor sit'
+				heading='Complete Linux Training Course'
+				subheading='Skills: Linux · Command Line · Shell Scripting · System Administration'
+				date='Apr 2025'
+				imagePath='/src/assets/udemy.png'
+				altText='Complete Linux Training Course'
 				imageClass='h-11 w-auto md:-left-16'
-				href='https://www.google.com'
+				href='https://ude.my/UC-e4b116b4-8e28-4401-9a3a-2a1e9b26a99c/'
 			/>
 			<Card
 				as='a'
-				heading='Lorem ipsum, dolor sit amet'
-				subheading='Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam dicta.'
-				date='Mar 2029 - Mar 2032'
-				imagePath='/src/assets/about-astro.png'
-				altText='Lorem, ipsum dolor sit'
+				heading='Oracle Cloud Infrastructure 2024 Generative AI Certified Professional'
+				subheading='Skills: OCI · Large Language Models (LLM) · Retrieval-Augmented Generation (RAG) · Generative AI Tools'
+				date='Aug 2024 - Aug 2026'
+				imagePath='/src/assets/oci.jpg'
+				altText='Oracle Cloud Infrastructure 2024 Generative AI Certified Professional'
 				imageClass='h-11 w-auto md:-left-16'
-				href='https://www.google.com'
+				href='https://catalog-education.oracle.com/ords/certview/sharebadge?id=F916FC079E790150C95ED6709B82FD279F3E032F0343A3F0FBDD4B43D77607C4'
 			/>
 		</Section>
 
@@ -211,11 +264,12 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 			<SkillLayout title='Languages' skills={languages} />
 			<SkillLayout title='Frontend' skills={frontend} />
 			<SkillLayout title='Backend' skills={backend} />
+			<SkillLayout title='Tools' skills={devtools} />
 			<SkillLayout title='Others' skills={others} />
 		</Section>
 	</div>
 	<a
-		href='https://github.com/srleom/astro-theme-resume.git'
+		href='/files/resume-cv.pdf'
 		class='mt-16 flex flex-row items-center gap-x-3 rounded-3xl border border-input px-4 py-2 text-sm shadow-sm transition-all hover:shadow-md'
 	>
 		<span class='relative flex items-center justify-center'>
@@ -225,6 +279,6 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 			<span class='relative inline-flex h-2 w-2 rounded-full bg-green-400'></span>
 		</span>
 
-		<p class='font-medium'>Get free template</p>
+		<p class='font-medium'>Download Resume</p>
 	</a>
 </PageLayout>

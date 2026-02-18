@@ -23,7 +23,9 @@ export default defineConfig({
       filter: (page) => !page.endsWith('/_astro/')
     }),
 		mdx(),
-    icon()
+    icon({
+      iconDir: 'src/icons'
+    })
   ],
   markdown: {
     remarkPlugins: [remarkUnwrapImages, remarkReadingTime],

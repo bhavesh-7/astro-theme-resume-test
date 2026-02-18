@@ -3,85 +3,165 @@ import PageLayout from '@/layouts/BaseLayout.astro'
 import ToolSection from '@/components/ToolSection.astro'
 import Button from '@/components/Button.astro'
 
-const DESIGN = [
-	{
-		name: 'Figma',
-		description: 'Design Tool',
-		href: 'https://www.figma.com/',
-		iconPath: 'figma',
-		iconBgColour: '#000001'
-	}
+/* =========================
+   OPERATING SYSTEM & DESKTOP
+========================= */
+
+const OPERATING_SYSTEM = [
+	{ name: 'Fedora', description: 'Primary Linux Distribution', href: 'https://getfedora.org/', iconPath: 'fedora', iconBgColour: '#294172' },
+	{ name: 'Red Hat', description: 'Enterprise Linux', href: 'https://www.redhat.com/', iconPath: 'redhat', iconBgColour: '#EE0000' },
+	{ name: 'Ubuntu', description: 'Linux Distribution', href: 'https://ubuntu.com/', iconPath: 'ubuntu', iconBgColour: '#E95420' },
+	{ name: 'Debian', description: 'Linux Distribution', href: 'https://debian.org/', iconPath: 'debian', iconBgColour: '#A81D33' },
+	{ name: 'Arch Linux', description: 'Linux Distribution', href: 'https://archlinux.org/', iconPath: 'archlinux', iconBgColour: '#1793D1' },
+	{ name: 'Hyprland', description: 'Wayland Compositor', href: 'https://hyprland.org/', iconPath: 'hyprland', iconBgColour: '#111111' }
 ]
 
-const PRODUCTIVITY = [
-	{
-		name: 'Arc',
-		description: 'Browser',
-		href: 'https://arc.net/',
-		iconPath: 'arc',
-		iconBgColour: '#414350'
-	},
-	{
-		name: 'Notion',
-		description: 'Note Taking',
-		href: 'https://www.notion.so/product',
-		iconPath: 'notion',
-		iconBgColour: '#EFEFEE'
-	},
-	{
-		name: 'Obsidian',
-		description: 'Long-form Writing',
-		href: 'https://obsidian.md/',
-		iconPath: 'obsidian',
-		iconBgColour: '#7A3EE8'
-	}
+/* =========================
+   TERMINAL & SHELL
+========================= */
+
+const TERMINAL = [
+	{ name: 'Ghostty', description: 'GPU Accelerated Terminal', href: 'https://ghostty.org/', iconPath: 'ghostty', iconBgColour: '#1C1C1C' },
+	{ name: 'Kitty', description: 'Terminal Emulator', href: 'https://sw.kovidgoyal.net/kitty/', iconPath: 'kitty', iconBgColour: '#111111' },
+	{ name: 'tmux', description: 'Terminal Multiplexer', href: 'https://github.com/tmux/tmux', iconPath: 'tmux', iconBgColour: '#1B1B1B' },
+	{ name: 'Spaceship', description: 'Zsh Prompt', href: 'https://spaceship-prompt.sh/', iconPath: 'spaceship', iconBgColour: '#000000' }
 ]
 
-const DEVELOPMENT = [
-	{
-		name: 'VS Code',
-		description: 'IDE',
-		href: 'https://code.visualstudio.com/',
-		iconPath: 'vscode',
-		iconBgColour: '#2C2C32'
-	},
-	{
-		name: 'ChatGPT',
-		description: 'AI',
-		href: 'https://chat.openai.com/',
-		iconPath: 'chatgpt',
-		iconBgColour: '#06A67F'
-	}
+/* =========================
+   EDITORS & IDEs
+========================= */
+
+const EDITORS = [
+	{ name: 'Neovim', description: 'Editor', href: 'https://neovim.io/', iconPath: 'neovim', iconBgColour: '#019733' },
+	{ name: 'Lazy.nvim', description: 'Neovim Plugin Manager', href: 'https://github.com/folke/lazy.nvim', iconPath: 'lazyvim', iconBgColour: '#000000' },
+	{ name: 'VSCodium', description: 'Open Source IDE', href: 'https://vscodium.com/', iconPath: 'vscodium', iconBgColour: '#2C2C32' },
+	{ name: 'Android Studio', description: 'Android Development', href: 'https://developer.android.com/studio', iconPath: 'androidstudio', iconBgColour: '#1B1B1B' }
+]
+
+/* =========================
+   AI & LLM ECOSYSTEM
+========================= */
+
+const AI = [
+	{ name: 'ChatGPT', description: 'AI Assistant', href: 'https://chat.openai.com/', iconPath: 'chatgpt', iconBgColour: '#06A67F' },
+	{ name: 'Claude', description: 'AI Assistant', href: 'https://claude.ai/', iconPath: 'claude', iconBgColour: '#111111' },
+	{ name: 'Gemini', description: 'AI Assistant', href: 'https://gemini.google.com/', iconPath: 'gemini', iconBgColour: '#000000' },
+	{ name: 'Gemini CLI', description: 'CLI LLM Tool', href: 'https://ai.google.dev/', iconPath: 'gemini', iconBgColour: '#000000' },
+	{ name: 'Grok', description: 'AI Assistant', href: 'https://x.ai/', iconPath: 'grok', iconBgColour: '#111111' },
+	{ name: 'Kiro CLI', description: 'CLI AI Tool', href: '#', iconPath: 'kiro', iconBgColour: '#000000' }
+]
+
+/* =========================
+   CLOUD & PLATFORMS
+========================= */
+
+const CLOUD = [
+	{ name: 'AWS', description: 'Cloud Provider', href: 'https://aws.amazon.com/', iconPath: 'aws', iconBgColour: '#FF9900' },
+	{ name: 'Google Cloud', description: 'Cloud Provider', href: 'https://cloud.google.com/', iconPath: 'googlecloud', iconBgColour: '#4285F4' },
+	{ name: 'DigitalOcean', description: 'Cloud Provider', href: 'https://digitalocean.com/', iconPath: 'digitalocean', iconBgColour: '#0080FF' },
+	{ name: 'Oracle Cloud', description: 'Cloud Provider', href: 'https://oracle.com/cloud/', iconPath: 'oracle', iconBgColour: '#F80000' },
+	{ name: 'Cloudflare', description: 'Edge & DNS', href: 'https://cloudflare.com/', iconPath: 'cloudflare', iconBgColour: '#F48120' },
+	{ name: 'Vercel', description: 'Frontend Deployment', href: 'https://vercel.com/', iconPath: 'vercel', iconBgColour: '#000000' },
+	{ name: 'Supabase', description: 'Backend Platform', href: 'https://supabase.com/', iconPath: 'supabase', iconBgColour: '#3ECF8E' },
+	{ name: 'Firebase', description: 'Backend Platform', href: 'https://firebase.google.com/', iconPath: 'firebase', iconBgColour: '#FFCA28' },
+	{ name: 'Zoho', description: 'Business Suite', href: 'https://zoho.com/', iconPath: 'zoho', iconBgColour: '#E42527' }
+]
+
+/* =========================
+   DEVOPS & VIRTUALIZATION
+========================= */
+
+const DEVOPS = [
+	{ name: 'Docker', description: 'Containerization', href: 'https://docker.com/', iconPath: 'docker', iconBgColour: '#2496ED' },
+	{ name: 'Kubernetes', description: 'Orchestration', href: 'https://kubernetes.io/', iconPath: 'kubernetes', iconBgColour: '#326CE5' },
+	{ name: 'Terraform', description: 'Infrastructure as Code', href: 'https://terraform.io/', iconPath: 'terraform', iconBgColour: '#7B42BC' },
+	{ name: 'Ansible', description: 'Configuration Management', href: 'https://ansible.com/', iconPath: 'ansible', iconBgColour: '#000000' },
+	{ name: 'Proxmox', description: 'Virtualization Platform', href: 'https://proxmox.com/', iconPath: 'proxmox', iconBgColour: '#E57000' },
+	{ name: 'QEMU', description: 'Virtual Machine Emulator', href: 'https://qemu.org/', iconPath: 'qemu', iconBgColour: '#000000' }
+]
+
+/* =========================
+   INFRASTRUCTURE & MAIL
+========================= */
+
+const INFRA = [
+	{ name: 'Mailcow', description: 'Mail Suite', href: 'https://mailcow.email/', iconPath: 'mailcow', iconBgColour: '#000000' },
+	{ name: 'Caddy', description: 'Web Server', href: 'https://caddyserver.com/', iconPath: 'caddy', iconBgColour: '#000000' },
+	{ name: 'Guacamole', description: 'Remote Access Gateway', href: 'https://guacamole.apache.org/', iconPath: 'guacamole', iconBgColour: '#000000' }
+]
+
+/* =========================
+   SELF HOSTED
+========================= */
+
+const SELF_HOSTED = [
+	{ name: 'Immich', description: 'Self Hosted Photos', href: 'https://immich.app/', iconPath: 'immich', iconBgColour: '#000000' },
+	{ name: 'Nextcloud', description: 'Self Hosted Cloud', href: 'https://nextcloud.com/', iconPath: 'nextcloud', iconBgColour: '#0082C9' }
+]
+
+/* =========================
+   COLLAB
+========================= */
+
+const COLLAB = [
+	{ name: 'GitHub', description: 'Version Control', href: 'https://github.com/', iconPath: 'github', iconBgColour: '#000000' },
+	{ name: 'Discord', description: 'Community', href: 'https://discord.com/', iconPath: 'discord', iconBgColour: '#5865F2' },
+	{ name: 'Matrix', description: 'Decentralized Chat', href: 'https://matrix.org/', iconPath: 'matrix', iconBgColour: '#000000' }
+]
+
+/* =========================
+   CREATIVE
+========================= */
+
+const CREATIVE = [
+	{ name: 'GIMP', description: 'Image Editing', href: 'https://gimp.org/', iconPath: 'gimp', iconBgColour: '#000000' },
+	{ name: 'Inkscape', description: 'Vector Graphics', href: 'https://inkscape.org/', iconPath: 'inkscape', iconBgColour: '#000000' },
+	{ name: 'Kdenlive', description: 'Video Editing', href: 'https://kdenlive.org/', iconPath: 'kdenlive', iconBgColour: '#000000' },
+	{ name: 'LibreOffice', description: 'Office Suite', href: 'https://libreoffice.org/', iconPath: 'libreoffice', iconBgColour: '#000000' }
+]
+
+const KNOWLEDGE = [
+	{ name: 'Obsidian', description: 'Knowledge Base', href: 'https://obsidian.md/', iconPath: 'obsidian', iconBgColour: '#7A3EE8' }
+]
+
+const BROWSERS = [
+	{ name: 'Zen Browser', description: 'Primary Browser', href: 'https://zen-browser.app/', iconPath: 'zen', iconBgColour: '#000000' }
+]
+
+const MOBILE = [
+	{ name: 'F-Droid', description: 'Open Source App Store', href: 'https://f-droid.org/', iconPath: 'fdroid', iconBgColour: '#1976D2' }
+]
+
+const MEDIA = [
+	{ name: 'Apple Music', description: 'Music Streaming', href: 'https://music.apple.com/', iconPath: 'applemusic', iconBgColour: '#FA243C' },
+	{ name: 'Twitch', description: 'Live Streaming', href: 'https://twitch.tv/', iconPath: 'twitch', iconBgColour: '#9146FF' }
 ]
 ---
 
-<PageLayout meta={{ title: 'Home' }}>
+<PageLayout meta={{ title: 'Tools' }}>
 	<div class='w-full'>
-		<Button title='Back' href='/' style='button'>
-			<svg
-				xmlns='http://www.w3.org/2000/svg'
-				width='14'
-				height='14'
-				viewBox='0 0 24 24'
-				slot='icon-before'
-			>
-				<path
-					fill='currentColor'
-					d='m6.921 12.5l5.792 5.792L12 19l-7-7l7-7l.713.708L6.921 11.5H19v1z'
-				>
-				</path>
-			</svg>
-		</Button>
+		<Button title='Back' href='/' style='button' />
 
 		<div class='mt-5 flex w-full flex-col gap-y-10'>
 			<div>
 				<h1 class='mb-1 text-2xl font-bold'>Tools</h1>
-				<p>Tools and software I use daily</p>
+				<p>Tools, platforms and systems I actively use</p>
 			</div>
 
-			<ToolSection title='Design' tools={DESIGN} />
-			<ToolSection title='Productivity' tools={PRODUCTIVITY} />
-			<ToolSection title='Development' tools={DEVELOPMENT} />
+			<ToolSection title='Operating System & Desktop' tools={OPERATING_SYSTEM} />
+			<ToolSection title='Terminal & Shell Workflow' tools={TERMINAL} />
+			<ToolSection title='Editors & IDEs' tools={EDITORS} />
+			<ToolSection title='AI & LLM Ecosystem' tools={AI} />
+			<ToolSection title='Cloud & Platforms' tools={CLOUD} />
+			<ToolSection title='DevOps & Virtualization' tools={DEVOPS} />
+			<ToolSection title='Infrastructure & Mail Stack' tools={INFRA} />
+			<ToolSection title='Self Hosted Systems' tools={SELF_HOSTED} />
+			<ToolSection title='Collaboration & Communication' tools={COLLAB} />
+			<ToolSection title='Creative & Media' tools={CREATIVE} />
+			<ToolSection title='Knowledge & Writing' tools={KNOWLEDGE} />
+			<ToolSection title='Browsers' tools={BROWSERS} />
+			<ToolSection title='Mobile & Distribution' tools={MOBILE} />
+			<ToolSection title='Media & Streaming' tools={MEDIA} />
 		</div>
 	</div>
 </PageLayout>

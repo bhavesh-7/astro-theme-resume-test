@@ -26,7 +26,9 @@ const post = defineCollection({
 					src: image(),
 					alt: z.string()
 				})
-				.optional(),
+				.optional()
+				.nullable()
+				.catch(() => null),
 			draft: z.boolean().default(false),
 			tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
 			ogImage: z.string().optional()
